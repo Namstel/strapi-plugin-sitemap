@@ -19,6 +19,8 @@
   "Settings.SettingsTitle": "Settings",
   "Settings.Field.Hostname.Label": "Hostname",
   "Settings.Field.Hostname.Description": "The URL of your website",
+  "Settings.Field.WebsiteName.Label": "Website name",
+  "Settings.Field.WebsiteName.Description": "The URL of your website",
   "Settings.Field.HostnameOverrides.Label": "Hostname overrides",
   "Settings.Field.HostnameOverrides.Button": "Configure",
   "Settings.Field.HostnameOverrides.Description": "Specify hostname per language",
