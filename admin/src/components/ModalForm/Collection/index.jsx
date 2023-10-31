@@ -183,7 +183,6 @@ const CollectionForm = (props) => {
 
             <GridItem col={12}>
               <TextInput
-                placeholder="My Website"
                 label={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Label', defaultMessage: 'Title field for News' })}
                 name="newsTitleField"
                 value={modifiedState.getIn([uid, 'languages', langcode, 'newsTitleField'], '')}
