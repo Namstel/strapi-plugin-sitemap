@@ -11,6 +11,7 @@ import {
   Checkbox,
   Combobox,
   ComboboxOption,
+  TextInput,
 } from '@strapi/design-system';
 
 import SelectContentTypes from '../../SelectContentTypes';
@@ -178,6 +179,17 @@ const CollectionForm = (props) => {
               >
                 {formatMessage({ id: 'sitemap.Settings.Field.AddNews.Label', defaultMessage: 'Add News' })}
               </Checkbox>
+            </GridItem>
+
+            <GridItem col={12}>
+              <TextInput
+                placeholder="My Website"
+                label={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Label', defaultMessage: 'Title field for News' })}
+                name="newsTitleField"
+                value={modifiedState.getIn([uid, 'languages', langcode, 'newsTitleField'], true)}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Description', defaultMessage: 'Field to use to set the field title in news.publication.' })}
+                onChange={(e) => onChange(uid, langcode, 'addNews', e.target.value)}
+              />
             </GridItem>
           </Grid>
         </GridItem>
