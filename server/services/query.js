@@ -98,7 +98,7 @@ const getPages = async (config, contentType, ids) => {
   for(const language in config.contentTypes[contentType].languages) {
     const field = config.contentTypes[contentType].languages[language].newsTitleField;
     console.log({ field });
-    fields.push(field);
+    // fields.push(field);
   }
 
   const pages = await noLimit(strapi, contentType, {
