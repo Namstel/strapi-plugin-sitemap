@@ -166,6 +166,19 @@ const CollectionForm = (props) => {
                 {formatMessage({ id: 'sitemap.Settings.Field.IncludeLastmod.Label', defaultMessage: 'Lastmod' })}
               </Checkbox>
             </GridItem>
+
+            <GridItem col={12}>
+              <Checkbox
+                onValueChange={(cbValue) => {
+                  onChange(uid, langcode, 'addNews', cbValue);
+                }}
+                value={modifiedState.getIn([uid, 'languages', langcode, 'addNews'], true)}
+                disabled={!uid || (contentTypes[uid].locales && !langcode)}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.AddNews.Description', defaultMessage: 'Adds a News object to all the URLs of this type.' })}
+              >
+                {formatMessage({ id: 'sitemap.Settings.Field.AddNews.Label', defaultMessage: 'Add News' })}
+              </Checkbox>
+            </GridItem>
           </Grid>
         </GridItem>
       </Grid>
