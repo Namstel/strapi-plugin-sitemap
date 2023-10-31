@@ -188,7 +188,7 @@ const CollectionForm = (props) => {
                 name="newsTitleField"
                 value={modifiedState.getIn([uid, 'languages', langcode, 'newsTitleField'], true)}
                 hint={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Description', defaultMessage: 'Field to use to set the field title in news.publication.' })}
-                onChange={(e) => onChange(uid, langcode, 'addNews', e.target.value)}
+                onChange={(e) => onChange(uid, langcode, 'newsTitleField', e.target.value)}
               />
             </GridItem>
           </Grid>
