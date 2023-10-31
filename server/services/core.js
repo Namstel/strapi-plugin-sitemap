@@ -103,7 +103,7 @@ const getSitemapPageData = async (config, page, contentType) => {
         language: locale,
       },
       title: page[titleField],
-      publication_date: page.publishedAt.split('T')[0] || page.createdAt.split('T')[0],
+      publication_date: page.publishedAt?.split('T')[0] || page.createdAt?.split('T')[0],
     };
   }
 
