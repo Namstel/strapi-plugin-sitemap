@@ -100,7 +100,7 @@ const getSitemapPageData = async (config, page, contentType) => {
     pageData.news = {
       publication: {
         name: config.websiteName,
-        language: locale,
+        language: page.locale,
       },
       title: page[titleField],
       publication_date: page.publishedAt?.split('T')[0] || page.createdAt?.split('T')[0],
