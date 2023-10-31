@@ -96,8 +96,8 @@ const getPages = async (config, contentType, ids) => {
   const fields = getFieldsFromConfig(config.contentTypes[contentType], true, isLocalized);
 
   for(const language in config.contentTypes[contentType].languages) {
-    const field = config.contentTypes[contentType].languages[language].titleField;
-    console.log({ field })
+    const field = config.contentTypes[contentType].languages[language].newsTitleField;
+    console.log({ field });
     fields.push(field);
   }
 
