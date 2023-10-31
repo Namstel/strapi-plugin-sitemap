@@ -32,8 +32,6 @@ const getFieldsFromConfig = (contentType, topLevel = false, isLocalized = false,
     Object.entries(contentType['languages']).map(([langcode, { pattern }]) => {
       fields.push(...getService('pattern').getFieldsFromPattern(pattern, topLevel, relation));
     });
-
-    // const titleField = config.contentTypes[contentType]['languages'][locale].titleField || 'title';
   }
 
 
@@ -94,6 +92,8 @@ const getPages = async (config, contentType, ids) => {
 
   const relations = getRelationsFromConfig(config.contentTypes[contentType]);
   const fields = getFieldsFromConfig(config.contentTypes[contentType], true, isLocalized);
+
+  console.log(JSON.stringify(config.contentTypes))
 
   for(const language in config.contentTypes[contentType].languages) {
     const field = config.contentTypes[contentType].languages[language].newsTitleField;
