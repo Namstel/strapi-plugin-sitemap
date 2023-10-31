@@ -28,10 +28,15 @@ const getFieldsFromConfig = (contentType, topLevel = false, isLocalized = false,
   let fields = [];
 
   if (contentType) {
+    console.log({ contentType})
     Object.entries(contentType['languages']).map(([langcode, { pattern }]) => {
       fields.push(...getService('pattern').getFieldsFromPattern(pattern, topLevel, relation));
     });
+
+    // const titleField = config.contentTypes[contentType]['languages'][locale].titleField || 'title';
   }
+
+
 
   if (topLevel) {
     if (isLocalized) {
@@ -89,6 +94,12 @@ const getPages = async (config, contentType, ids) => {
 
   const relations = getRelationsFromConfig(config.contentTypes[contentType]);
   const fields = getFieldsFromConfig(config.contentTypes[contentType], true, isLocalized);
+
+  for(const language in config.contentTypes[contentType].languages) {
+    const field = config.contentTypes[contentType].languages[language].titleField;
+    console.log({ field })
+    fields.push(field);
+  }
 
   const pages = await noLimit(strapi, contentType, {
     filters: {
