@@ -81,6 +81,8 @@ const getSitemapPageData = async (config, page, contentType) => {
     return null;
   }
 
+  console.log("getSitemapPageData config", JSON.stringify(config));
+
   const { pattern } = config.contentTypes[contentType]['languages'][locale];
   const path = await strapi.plugins.sitemap.services.pattern.resolvePattern(pattern, page);
   let hostnameOverride = config.hostname_overrides[page.locale] || '';
