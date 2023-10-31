@@ -39,6 +39,8 @@ const getFieldsFromConfig = (contentType, topLevel = false, isLocalized = false,
     }
 
     fields.push('updatedAt');
+    fields.push('createdAt');
+    fields.push('publishedAt');
   }
 
   // Remove duplicates
