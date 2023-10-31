@@ -173,7 +173,7 @@ const CollectionForm = (props) => {
                 onValueChange={(cbValue) => {
                   onChange(uid, langcode, 'addNews', cbValue);
                 }}
-                value={modifiedState.getIn([uid, 'languages', langcode, 'addNews'], true)}
+                value={modifiedState.getIn([uid, 'languages', langcode, 'addNews'], false)}
                 disabled={!uid || (contentTypes[uid].locales && !langcode)}
                 hint={formatMessage({ id: 'sitemap.Settings.Field.AddNews.Description', defaultMessage: 'Adds a News object to all the URLs of this type.' })}
               >
@@ -186,7 +186,7 @@ const CollectionForm = (props) => {
                 placeholder="My Website"
                 label={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Label', defaultMessage: 'Title field for News' })}
                 name="newsTitleField"
-                value={modifiedState.getIn([uid, 'languages', langcode, 'newsTitleField'], 'title')}
+                value={modifiedState.getIn([uid, 'languages', langcode, 'newsTitleField'], '')}
                 hint={formatMessage({ id: 'sitemap.Settings.Field.NewsTitleField.Description', defaultMessage: 'Field to use to set the field title in news.publication.' })}
                 onChange={(e) => onChange(uid, langcode, 'newsTitleField', e.target.value)}
               />
