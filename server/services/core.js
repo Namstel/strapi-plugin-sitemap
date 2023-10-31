@@ -95,6 +95,18 @@ const getSitemapPageData = async (config, page, contentType) => {
     priority: parseFloat(config.contentTypes[contentType]['languages'][locale].priority) || 0.5,
   };
 
+  if (config.contentTypes[contentType]['languages'][locale].addNews !== false) {
+    const titleField = config.contentTypes[contentType]['languages'][locale].titleField || 'title';
+    pageData.news = {
+      publication: {
+        name: config.websiteName,
+        language: locale,
+      },
+      title: page[titleField],
+      publication_date: page.publishedAt || page.createdAt,
+    };
+  }
+
   if (config.contentTypes[contentType]['languages'][locale].includeLastmod === false) {
     delete pageData.lastmod;
   }
