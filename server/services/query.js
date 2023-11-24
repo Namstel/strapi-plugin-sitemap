@@ -92,13 +92,14 @@ const getPages = async (config, contentType, ids) => {
   const relations = getRelationsFromConfig(config.contentTypes[contentType]);
   const fields = getFieldsFromConfig(config.contentTypes[contentType], true, isLocalized);
 
-  for(const language in config.contentTypes[contentType].languages) {
+  for (const language in config.contentTypes[contentType].languages) {
+    console.log({ language });
     const field = config.contentTypes[contentType].languages[language].newsTitleField;
-    if(!field) continue;
+    if (!field) continue;
     fields.push(field);
   }
 
-  const pages = await noLimit(strapi, contentType, {
+  const params = {
     filters: {
       $or: [
         {
@@ -127,7 +128,9 @@ const getPages = async (config, contentType, ids) => {
     },
     orderBy: 'id',
     publicationState: excludeDrafts ? 'live' : 'preview',
-  });
+  };
+
+  const pages = await noLimit(strapi, contentType, params);
 
   return pages;
 };

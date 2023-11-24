@@ -90,6 +90,16 @@ const CollectionForm = (props) => {
                 value={langcode}
               />
             </GridItem>
+            <GridItem col={12}>
+
+              <TextInput
+                label={formatMessage({ id: 'sitemap.Settings.Field.Filter.Label', defaultMessage: 'Additional filters' })}
+                name="filter"
+                value={modifiedState.getIn([uid, 'languages', langcode, 'filter'], '')}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.Filter.Description', defaultMessage: 'Add additional filters to the content type.' })}
+                onChange={(e) => onChange(uid, langcode, 'filter', e.target.value)}
+              />
+            </GridItem>
           </Grid>
         </GridItem>
         <GridItem col={6} s={12}>
