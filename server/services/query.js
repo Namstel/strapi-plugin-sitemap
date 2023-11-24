@@ -91,13 +91,24 @@ const getPages = async (config, contentType, ids) => {
 
   const relations = getRelationsFromConfig(config.contentTypes[contentType]);
   const fields = getFieldsFromConfig(config.contentTypes[contentType], true, isLocalized);
+  let filters = {}
 
   for (const language in config.contentTypes[contentType].languages) {
-    console.log({ language });
-    const field = config.contentTypes[contentType].languages[language].newsTitleField;
-    if (!field) continue;
-    fields.push(field);
+    const newsTitleField = config.contentTypes[contentType].languages[language].newsTitleField;
+    if (newsTitleField) fields.push(newsTitleField);
+
+    if (config.contentTypes[contentType].languages[language]['filter']) {
+      const filter = config.contentTypes[contentType].languages[language]['filter'];
+      filters = { ...filters, ...filter.value }
+    }
+
+    if (config.contentTypes[contentType].languages[language]['age']) {
+      const age = config.contentTypes[contentType].languages[language]['age'];
+      const date = new Date(new Date().getTime() - (age));
+      filters = { ...filters, publishedAt: { $gte: date } }
+    }
   }
+
 
   const params = {
     filters: {
@@ -116,6 +127,7 @@ const getPages = async (config, contentType, ids) => {
       id: ids ? {
         $in: ids,
       } : {},
+      ...filters,
     },
     locale: 'all',
     fields,
