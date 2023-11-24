@@ -103,11 +103,21 @@ const CollectionForm = (props) => {
 
             <GridItem col={12}>
               <TextInput
-                label={formatMessage({ id: 'sitemap.Settings.Field.Filter.Label', defaultMessage: 'Age of items (ms)' })}
-                name="age"
-                value={modifiedState.getIn([uid, 'languages', langcode, 'age'], '')}
-                hint={formatMessage({ id: 'sitemap.Settings.Field.Filter.Description', defaultMessage: 'Define the maximum age of an item in milliseconds.' })}
-                onChange={(e) => onChange(uid, langcode, 'age', e.target.value)}
+                label={formatMessage({ id: 'sitemap.Settings.Field.MaxAge.Label', defaultMessage: 'Max age of items (ms)' })}
+                name="maxAge"
+                value={modifiedState.getIn([uid, 'languages', langcode, 'maxAge'], '')}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.MaxAge.Description', defaultMessage: 'Define the maximum age of an item in milliseconds.' })}
+                onChange={(e) => onChange(uid, langcode, 'maxAge', e.target.value)}
+              />
+            </GridItem>
+
+            <GridItem col={12}>
+              <TextInput
+                label={formatMessage({ id: 'sitemap.Settings.Field.MinAge.Label', defaultMessage: 'Min age of items (ms)' })}
+                name="maxAminAgege"
+                value={modifiedState.getIn([uid, 'languages', langcode, 'minAge'], '')}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.MinAge.Description', defaultMessage: 'Define the minimum age of an item in milliseconds.' })}
+                onChange={(e) => onChange(uid, langcode, 'minAge', e.target.value)}
               />
             </GridItem>
           </Grid>

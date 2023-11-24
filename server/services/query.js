@@ -102,10 +102,20 @@ const getPages = async (config, contentType, ids) => {
       filters = { ...filters, ...filter.value }
     }
 
-    if (config.contentTypes[contentType].languages[language]['age']) {
-      const age = config.contentTypes[contentType].languages[language]['age'];
-      const date = new Date(new Date().getTime() - (age));
+    if (config.contentTypes[contentType].languages[language]['maxAge']) {
+      const maxAge = config.contentTypes[contentType].languages[language]['maxAge'];
+      const date = new Date(new Date().getTime() - (maxAge));
       filters = { ...filters, publishedAt: { $gte: date } }
+    }
+
+    if (config.contentTypes[contentType].languages[language]['minAge']) {
+      const minAge = config.contentTypes[contentType].languages[language]['minAge'];
+      const date = new Date(new Date().getTime() - (minAge));
+      if(filters.publishedAt) {
+        filters.publishedAt = { ...filters.publishedAt, $lte: date }
+      } else {
+        filters = { ...filters, publishedAt: { $lte: date } }
+      }
     }
   }
 
