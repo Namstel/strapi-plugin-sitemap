@@ -100,6 +100,16 @@ const CollectionForm = (props) => {
                 onChange={(e) => onChange(uid, langcode, 'filter', e.target.value)}
               />
             </GridItem>
+
+            <GridItem col={12}>
+              <TextInput
+                label={formatMessage({ id: 'sitemap.Settings.Field.Filter.Label', defaultMessage: 'Age of items (ms)' })}
+                name="age"
+                value={modifiedState.getIn([uid, 'languages', langcode, 'age'], '')}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.Filter.Description', defaultMessage: 'Define the maximum age of an item in milliseconds.' })}
+                onChange={(e) => onChange(uid, langcode, 'age', e.target.value)}
+              />
+            </GridItem>
           </Grid>
         </GridItem>
         <GridItem col={6} s={12}>
