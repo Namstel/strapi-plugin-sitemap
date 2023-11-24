@@ -75,6 +75,16 @@ const CollectionForm = (props) => {
         <GridItem col={6} s={12}>
           <Grid gap={4}>
             <GridItem col={12}>
+              <TextInput
+                label={formatMessage({ id: 'sitemap.Settings.Field.Title.Label', defaultMessage: 'Title' })}
+                name="title"
+                required
+                value={modifiedState.getIn([uid, 'languages', langcode, 'title'], '')}
+                hint={formatMessage({ id: 'sitemap.Settings.Field.Title.Description', defaultMessage: 'Title of the bundle.' })}
+                onChange={(e) => onChange(uid, langcode, 'title', e.target.value)}
+              />
+            </GridItem>
+            <GridItem col={12}>
               <SelectContentTypes
                 contentTypes={contentTypes}
                 onChange={(value) => handleSelectChange(value)}
@@ -114,7 +124,7 @@ const CollectionForm = (props) => {
             <GridItem col={12}>
               <TextInput
                 label={formatMessage({ id: 'sitemap.Settings.Field.MinAge.Label', defaultMessage: 'Min age of items (ms)' })}
-                name="maxAminAgege"
+                name="minAge"
                 value={modifiedState.getIn([uid, 'languages', langcode, 'minAge'], '')}
                 hint={formatMessage({ id: 'sitemap.Settings.Field.MinAge.Description', defaultMessage: 'Define the minimum age of an item in milliseconds.' })}
                 onChange={(e) => onChange(uid, langcode, 'minAge', e.target.value)}
