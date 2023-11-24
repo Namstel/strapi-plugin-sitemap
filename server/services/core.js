@@ -95,7 +95,7 @@ const getSitemapPageData = async (config, page, contentType) => {
     priority: parseFloat(config.contentTypes[contentType]['languages'][locale].priority) || 0.5,
   };
 
-  if (config.contentTypes[contentType]['languages'][locale].addNews !== false) {
+  if (config.contentTypes[contentType]['languages'][locale].addNews === true) {
     const titleField = config.contentTypes[contentType]['languages'][locale].titleField || 'title';
     pageData.news = {
       publication: {
